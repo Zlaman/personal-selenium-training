@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="none">
+<suite name="Smoke Test Suite" parallel="none">
 	<parameter name="grid2.hub" value="" />
 	<parameter name="base.url" value="http://www.kerastase-usa.com/" />
 	<parameter name="browser.name" value="firefox" />
 	<parameter name="browser.version" value="" />
 	<parameter name="browser.platform" value="" />
+    <!--  TEST DATA  -->	
+    <parameter name="user1.email" value="billyjackson2@gmail.com" />
+    <parameter name="user1.password" value="zxczxczxc" />
+    <parameter name="user1.userName" value="BILLY" />
+    <parameter name="user2.email" value="billyjackson@gmail.com" />
+    <parameter name="user2.password" value="zxczxczxc" />
+    <parameter name="user2.userName" value="JIMMY" />
+    <!--  TEST DATA  -->
+    
 	<test name="Tests">
 		<classes>
-			<class name="com.zlaman.pages.SmokeTestKER" />
+			<class name="com.zlaman.pages.SmokeTests" />
 		</classes>
 	</test>
 </suite>
