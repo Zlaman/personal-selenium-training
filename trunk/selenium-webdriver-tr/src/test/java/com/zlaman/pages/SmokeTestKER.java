@@ -4,6 +4,7 @@ import static org.testng.Assert.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -28,6 +29,7 @@ public class SmokeTestKER extends TestBase{
         driver.findElement(By.id("q")).sendKeys("BCR0000");
         driver.findElement(By.id("q")).sendKeys(Keys.ENTER);
         driver.findElement(By.xpath("//div[@data-itemid='BCR0000']/a")).click();
+        new Actions(driver).moveToElement(driver.findElement(By.className("logo_image")));
         Select quantityDropdown = new Select(driver.findElement(By.name("quantity")));
         quantityDropdown.selectByVisibleText("3");
         driver.findElement(By.cssSelector("button.addtocartbutton")).click();
@@ -35,7 +37,6 @@ public class SmokeTestKER extends TestBase{
         assertTrue(verifyTextPresentIn(By.cssSelector("td > span.price_sale.single_product_price"), "$117.00"), "Price is wrong");
         driver.findElement(By.name("dwfrm_cart_shipments_i0_items_i0_deleteProduct")).click();
         assertFalse(verifyTextPresentIn(By.cssSelector("td > span.price_sale.single_product_price"), "$117.00"), "Product is still in cart");
-        driver.findElement(By.linkText("Logout")).click();
     }
    
 }
