@@ -1,4 +1,4 @@
-package com.zlaman.tests;
+package com.zlaman.pages;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
