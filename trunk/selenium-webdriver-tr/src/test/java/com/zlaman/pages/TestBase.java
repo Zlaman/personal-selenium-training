@@ -1,12 +1,11 @@
 package com.zlaman.pages;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -38,19 +37,22 @@ public class TestBase {
         browser.setPlatform(browserPlatform);
 
         driver = WebDriverFactory.getInstance(gridHubUrl, browser);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get(baseUrl);
 
-        loginPage = initElements(new LoginPage(driver));
-        webstoreHeader = initElements(new WebstoreHeader(driver));
+        /*
+         * loginPage = initElements(new LoginPage(driver)); webstoreHeader =
+         * initElements(new WebstoreHeader(driver));
+         */
 
     }
 
-    private <T extends Page> T initElements(T page) {
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10),
-                page);
-        return page;
-    }
+    /*
+     * private <T extends Page> T initElements(T page) {
+     * PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10),
+     * page); return page; }
+     */
 
     @AfterSuite(alwaysRun = true)
     public void tearDown() {

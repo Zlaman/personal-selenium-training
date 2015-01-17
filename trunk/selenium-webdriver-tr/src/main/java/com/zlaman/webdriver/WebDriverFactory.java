@@ -10,14 +10,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import com.opera.core.systems.OperaDriver;
-
 import com.zlaman.util.Browser;
 
 /*
@@ -53,7 +52,7 @@ public class WebDriverFactory {
      * @param gridHubUrl : grid hub URI
      * 
      * @param browser : Browser object containing info around the browser to hit
-     *  
+     * 
      * @return RemoteWebDriver
      */
     public static WebDriver getInstance(String gridHubUrl, Browser browser) {
@@ -73,7 +72,7 @@ public class WebDriverFactory {
             capability = DesiredCapabilities.chrome();
         } else if (FIREFOX.equals(browserName)) {
             capability = DesiredCapabilities.firefox();
-            
+
             FirefoxProfile ffProfile = new FirefoxProfile();
             capability.setCapability(FirefoxDriver.PROFILE, ffProfile);
             capability.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
@@ -81,17 +80,17 @@ public class WebDriverFactory {
 
             capability = DesiredCapabilities.internetExplorer();
             capability
-            .setCapability(
-                    InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
-                    true);
+                    .setCapability(
+                            InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+                            true);
         } else if (PHANTOMJS.equals(browserName)) {
             capability = DesiredCapabilities.phantomjs();
         } else if (OPERA.equals(browserName)) {
             capability = DesiredCapabilities.opera();
         } else if (SAFARI.equals(browserName)) {
             capability = DesiredCapabilities.safari();
-        } 
-        
+        }
+
         capability = setVersionAndPlatform(capability, browser.getVersion(),
                 browser.getPlatform());
 
@@ -109,7 +108,7 @@ public class WebDriverFactory {
      * Factory method to return a WebDriver instance given the browser to hit
      * 
      * @param browser : String representing the local browser to hit
-     *  
+     * 
      * @return WebDriver instance
      */
     private static WebDriver getInstance(String browserName) {

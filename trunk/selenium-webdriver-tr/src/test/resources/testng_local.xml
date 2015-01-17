@@ -17,7 +17,7 @@
     
 	<test name="Tests">
 		<classes>
-			<class name="com.zlaman.pages.SmokeTests" />
+			<class name="com.zlaman.pages.SmokeTestsDDT" />
 		</classes>
 	</test>
 </suite>

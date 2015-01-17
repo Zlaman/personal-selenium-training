@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import com.zlaman.model.User;
 
@@ -24,10 +25,12 @@ public class WebstoreHeader extends Page {
 
     public WebstoreHeader(WebDriver webDriver) {
         super(webDriver);
+        PageFactory.initElements(webDriver, this);
     }
 
-    public void openLoginPage() {
+    public LoginPage openLoginPage() {
         headerLoginLink.click();
+        return new LoginPage(getWebDriver());
     }
 
     public boolean verifyUserIsLoggedIn(User user) {
