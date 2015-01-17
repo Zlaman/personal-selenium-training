@@ -1,26 +1,41 @@
-package com.zlaman.pages;
+package com.zlaman.tests;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import org.testng.ITestContext;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.zlaman.model.User;
+import com.zlaman.pages.WebstoreHeader;
 
-public class SmokeTests extends TestBase {
+public class SmokeTestsDDT extends TestBase {
 
-    @Test(description = "Log in with new user and verify it is logged in and off")
-    public void kerLoginTest() {
+    @DataProvider(name = "users")
+    public Object[][] createData(ITestContext context) {
         User user1 = new User();
-        user1.initUser("billyjackson2@gmail.com", "zxczxczxc", "BILLY");
+        user1.initUser(context.getCurrentXmlTest().getParameter("user1.email"),
+                context.getCurrentXmlTest().getParameter("user1.password"),
+                context.getCurrentXmlTest().getParameter("user1.userName"));
+        User user2 = new User();
+        user2.initUser(context.getCurrentXmlTest().getParameter("user2.email"),
+                context.getCurrentXmlTest().getParameter("user2.password"),
+                context.getCurrentXmlTest().getParameter("user2.userName"));
+        return new Object[][] { { user1 }, { user2 }, };
+    }
+
+    @Test(description = "Log in with new user and verify it is logged in and off", dataProvider = "users")
+    public void kerLoginTest(User user) {
+
+        System.out.println("Using " + user.getUserName() + " DDT (8");
 
         WebstoreHeader webstoreHeader = new WebstoreHeader(driver);
-
-        webstoreHeader.openLoginPage().loginWithUser(user1, true);
-        assertTrue(webstoreHeader.verifyUserIsLoggedIn(user1),
+        webstoreHeader.openLoginPage().loginWithUser(user, true);
+        assertTrue(webstoreHeader.verifyUserIsLoggedIn(user),
                 "User is not logged in");
         webstoreHeader.logOff();
-        assertFalse(webstoreHeader.verifyUserIsLoggedIn(user1),
+        assertFalse(webstoreHeader.verifyUserIsLoggedIn(user),
                 "User is still logged in");
     }
 

@@ -1,4 +1,4 @@
-package com.zlaman.pages;
+package com.zlaman.tests;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +10,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import com.zlaman.pages.LoginPage;
+import com.zlaman.pages.WebstoreHeader;
 import com.zlaman.util.Browser;
 import com.zlaman.webdriver.WebDriverFactory;
 
