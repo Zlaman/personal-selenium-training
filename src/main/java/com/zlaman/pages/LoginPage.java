@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import com.zlaman.model.User;
 
@@ -12,7 +13,6 @@ import com.zlaman.model.User;
  * 
  */
 public class LoginPage extends Page {
-    
 
     @FindBy(how = How.CSS, using = "input.f_email[id *=dwfrm_login_username]")
     private WebElement userNameField;
@@ -28,19 +28,21 @@ public class LoginPage extends Page {
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
+        PageFactory.initElements(webDriver, this);
     }
 
-    public void loginWithUser(User user, Boolean rememberMeState) {
+    public LoginPage loginWithUser(User user, Boolean rememberMeState) {
         userNameField.clear();
         userNameField.sendKeys(user.getEmailAddress());
         passwordField.clear();
         passwordField.sendKeys(user.getPassword());
         if (rememberMeState) {
-            if (!rememberMeCheckBox.isSelected()){
+            if (!rememberMeCheckBox.isSelected()) {
                 rememberMeCheckBox.click();
-            }            
+            }
         }
         loginButton.click();
+        return this;
     }
 
 }
