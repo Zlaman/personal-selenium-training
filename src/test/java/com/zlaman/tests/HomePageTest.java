@@ -1,10 +1,12 @@
-package com.zlaman.pages;
+package com.zlaman.tests;
 
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.zlaman.pages.LoginPage;
 
 public class HomePageTest extends TestBase {
 
