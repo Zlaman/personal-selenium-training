@@ -22,7 +22,7 @@ import com.zlaman.webdriver.WebDriverFactory;
 
 public class TestBase {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
     protected String baseUrl;
     protected Browser browser;
     protected LoginPage loginPage;
