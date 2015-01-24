@@ -17,7 +17,8 @@
     
 	<test name="Tests">
 		<classes>
-			<class name="com.zlaman.tests.SmokeTestsDDT" />
+			<class name="com.zlaman.tests.SmokeTests" />
+			<class name="com.zlaman.tests.CopyOfSmokeTests" />
 		</classes>
 	</test>
 </suite>
