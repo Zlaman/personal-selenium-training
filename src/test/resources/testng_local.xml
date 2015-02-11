@@ -3,7 +3,7 @@
 <suite name="Smoke Test Suite" parallel="none">
 	<parameter name="grid2.hub" value="" />
 	<parameter name="base.url" value="http://www.kerastase-usa.com/" />
-	<parameter name="browser.name" value="firefox" />
+	<parameter name="browser.name" value="ie" />
 	<parameter name="browser.version" value="" />
 	<parameter name="browser.platform" value="" />
     <!--  TEST DATA  -->	
@@ -18,7 +18,6 @@
 	<test name="Tests">
 		<classes>
 			<class name="com.zlaman.tests.SmokeTests" />
-			<class name="com.zlaman.tests.CopyOfSmokeTests" />
 		</classes>
 	</test>
 </suite>

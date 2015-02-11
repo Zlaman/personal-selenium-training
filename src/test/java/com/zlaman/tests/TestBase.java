@@ -40,7 +40,7 @@ public class TestBase {
 
         driver = WebDriverFactory.getInstance(gridHubUrl, browser);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        driver.manage().window().maximize();
         driver.get(baseUrl);
 
         /*
